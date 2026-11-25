@@ -1,0 +1,20 @@
+[package]
+name = "wired-terminal-view"
+description = "gpui view of a terminal: grid painting with ligatures, cursor, keyboard, IME, scrolling"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+wired-core.workspace = true
+wired-vt.workspace = true
+wired-platform.workspace = true
+# Renamed so gpui's macros (`actions!`, ...) resolve their `gpui::` paths.
+gpui.workspace = true
+async-channel.workspace = true
+unicode-width.workspace = true
+regex.workspace = true
+
+[lints]
+workspace = true

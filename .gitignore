@@ -1,0 +1,15 @@
+# Rust
+/target/
+**/target/
+
+# Zig
+.zig-cache/
+zig-out/
+
+# Editors / OS
+*.stackdump
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+Desktop.ini

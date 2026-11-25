@@ -1,0 +1,21 @@
+[package]
+name = "wired-ui"
+description = "Window contents of wired: title bar, tabs, panes, settings and key bindings"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+wired-config.workspace = true
+wired-core.workspace = true
+wired-layout.workspace = true
+wired-platform.workspace = true
+wired-pty.workspace = true
+wired-terminal-view.workspace = true
+wired-vt.workspace = true
+gpui.workspace = true
+anyhow.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,18 @@
+[package]
+name = "wired-vt-sys"
+description = "Raw FFI bindings to libghostty-vt"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+links = "ghostty-vt"
+
+[build-dependencies]
+bindgen = { workspace = true, optional = true }
+
+[features]
+# Regenerate `src/bindings.rs` with bindgen (needs libclang). Normal builds use the committed file.
+regenerate = ["dep:bindgen"]
+
+[lints]
+workspace = true

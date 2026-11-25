@@ -1,0 +1,23 @@
+[package]
+name = "wired-app"
+description = "wired terminal emulator executable"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "wired"
+path = "src/main.rs"
+
+[dependencies]
+wired-platform.workspace = true
+wired-ui.workspace = true
+gpui.workspace = true
+
+[build-dependencies]
+embed-resource = "3"
+sha2.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,69 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+exclude = [".submodules"]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[workspace.dependencies]
+wired-vt-sys = { path = "crates/wired-vt-sys" }
+wired-vt = { path = "crates/wired-vt" }
+wired-pty = { path = "crates/wired-pty" }
+wired-core = { path = "crates/wired-core" }
+wired-terminal-view = { path = "crates/wired-terminal-view" }
+wired-layout = { path = "crates/wired-layout" }
+wired-ui = { path = "crates/wired-ui" }
+wired-platform = { path = "crates/wired-platform" }
+wired-config = { path = "crates/wired-config" }
+
+# gpui stack is pinned; gpui-kit and gpui-pre must move together.
+gpui = { package = "gpui-kit", version = "=0.9.1" }
+gpui-pre-windows = "=0.3.12"
+
+anyhow = "1"
+async-channel = "2"
+bindgen = "0.72"
+parking_lot = "0.12"
+portable-pty = "0.9"
+# Already in the tree through gpui; native window ids for the window helpers.
+raw-window-handle = "0.6"
+# Already in the tree through gpui; linear-time matching (no backtracking) for untrusted output.
+regex = "1.13"
+# Already in the tree through gpui; JSON Schema of config.toml for editors.
+schemars = "1.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+thiserror = "2"
+toml = "1"
+toml_edit = { version = "0.25", default-features = false, features = ["parse"] }
+unicode-width = "0.2"
+windows-sys = "0.61"
+
+# gpui with our patches (text rendering, IME, hover); the list is in the submodule's WIRED.md.
+[patch.crates-io]
+gpui-pre = { path = ".submodules/gpui-pre-wired/gpui-pre" }
+gpui-pre-windows = { path = ".submodules/gpui-pre-wired/gpui-pre-windows" }
+
+[workspace.lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+missing_debug_implementations = "warn"
+
+[workspace.lints.clippy]
+undocumented_unsafe_blocks = "deny"
+unwrap_used = "warn"
+dbg_macro = "warn"
+todo = "warn"
+print_stdout = "warn"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2
+# Dependencies (gpui and ~1500 crates) without debug info: much less to write and link.
+debug = false

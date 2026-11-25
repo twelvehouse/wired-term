@@ -1,0 +1,8 @@
+[submodule ".submodules/ghostty"]
+	path = .submodules/ghostty-wired
+	url = https://github.com/twelvehouse/ghostty-wired.git
+	shallow = true
+	branch = wired
+[submodule ".submodules/gpui-pre-wired"]
+	path = .submodules/gpui-pre-wired
+	url = https://github.com/twelvehouse/gpui-pre-wired.git
